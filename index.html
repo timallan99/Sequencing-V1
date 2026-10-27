@@ -1,0 +1,2258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sequence & Learn">
+  <meta name="mobile-web-app-capable" content="yes">
+  
+  <title>Sequence &amp; Learn</title>
+  
+  <style>
+    :root, [data-theme="dark"] {
+      --bg-body: #0b1120;
+      --bg-header: #1e293b;
+      --border-header: #334155;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      
+      --btn-bg: #334155;
+      --btn-border: #475569;
+      --btn-text: #f8fafc;
+      --btn-active: #1e293b;
+      
+      --zone-1-bg: #1c1917;
+      --zone-1-border: #f59e0b;
+      --zone-1-circle: #292524;
+      --zone-1-circle-border: #78350f;
+      --zone-1-heading: #fbbf24;
+      --zone-1-sub: #fde68a;
+      
+      --zone-2-bg: #082f49;
+      --zone-2-border: #38bdf8;
+      --zone-2-circle: #0c4a6e;
+      --zone-2-circle-border: #0369a1;
+      --zone-2-heading: #7dd3fc;
+      --zone-2-sub: #bae6fd;
+
+      --zone-3-bg: #2e1065;
+      --zone-3-border: #a855f7;
+      --zone-3-circle: #3b0764;
+      --zone-3-circle-border: #7e22ce;
+      --zone-3-heading: #d8b4fe;
+      --zone-3-sub: #f3e8ff;
+
+      --zone-4-bg: #3b0a28;
+      --zone-4-border: #ec4899;
+      --zone-4-circle: #500724;
+      --zone-4-circle-border: #be185d;
+      --zone-4-heading: #f472b6;
+      --zone-4-sub: #fbcfe8;
+
+      --zone-5-bg: #042f2e;
+      --zone-5-border: #14b8a6;
+      --zone-5-circle: #134e4a;
+      --zone-5-circle-border: #0f766e;
+      --zone-5-heading: #2dd4bf;
+      --zone-5-sub: #99f6e4;
+
+      --zone-filled-bg: #064e3b;
+      --zone-filled-border: #10b981;
+      
+      --dock-bg: #1e293b;
+      --dock-border: #334155;
+      --dock-pill-bg: #312e81;
+      --dock-pill-border: #4338ca;
+      --dock-pill-text: #e0e7ff;
+      
+      --card-bg: #0f172a;
+      --card-border: #475569;
+      --card-label: #e2e8f0;
+      --card-shadow: rgba(0, 0, 0, 0.4);
+      
+      --modal-card-bg: #1e293b;
+      --modal-overlay: rgba(11, 17, 32, 0.88);
+      --overlay-bg: rgba(11, 17, 32, 0.96);
+    }
+
+    [data-theme="light"] {
+      --bg-body: #f1f5f9;
+      --bg-header: #ffffff;
+      --border-header: #cbd5e1;
+      --text-main: #0f172a;
+      --text-sub: #64748b;
+      
+      --btn-bg: #f8fafc;
+      --btn-border: #cbd5e1;
+      --btn-text: #1e293b;
+      --btn-active: #e2e8f0;
+      
+      --zone-1-bg: #fffbeb;
+      --zone-1-border: #d97706;
+      --zone-1-circle: #fef3c7;
+      --zone-1-circle-border: #fcd34d;
+      --zone-1-heading: #92400e;
+      --zone-1-sub: #b45309;
+      
+      --zone-2-bg: #f0f9ff;
+      --zone-2-border: #0284c7;
+      --zone-2-circle: #e0f2fe;
+      --zone-2-circle-border: #bae6fd;
+      --zone-2-heading: #0369a1;
+      --zone-2-sub: #0284c7;
+
+      --zone-3-bg: #faf5ff;
+      --zone-3-border: #9333ea;
+      --zone-3-circle: #f3e8ff;
+      --zone-3-circle-border: #d8b4fe;
+      --zone-3-heading: #7e22ce;
+      --zone-3-sub: #9333ea;
+
+      --zone-4-bg: #fdf2f8;
+      --zone-4-border: #db2777;
+      --zone-4-circle: #fce7f3;
+      --zone-4-circle-border: #f9a8d4;
+      --zone-4-heading: #9d174d;
+      --zone-4-sub: #be185d;
+
+      --zone-5-bg: #f0fdfa;
+      --zone-5-border: #0d9488;
+      --zone-5-circle: #ccfbf1;
+      --zone-5-circle-border: #5eead4;
+      --zone-5-heading: #115e59;
+      --zone-5-sub: #0f766e;
+
+      --zone-filled-bg: #dcfce7;
+      --zone-filled-border: #16a34a;
+      
+      --dock-bg: #ffffff;
+      --dock-border: #cbd5e1;
+      --dock-pill-bg: #e0e7ff;
+      --dock-pill-border: #c7d2fe;
+      --dock-pill-text: #3730a3;
+      
+      --card-bg: #ffffff;
+      --card-border: #cbd5e1;
+      --card-label: #1e293b;
+      --card-shadow: rgba(0, 0, 0, 0.12);
+      
+      --modal-card-bg: #ffffff;
+      --modal-overlay: rgba(15, 23, 42, 0.65);
+      --overlay-bg: rgba(255, 255, 255, 0.96);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      height: 100dvh;
+      overflow: hidden;
+    }
+
+    body {
+      touch-action: none;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(6px, 1.5vw, 12px);
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    header {
+      width: 100%;
+      max-width: 1024px;
+      margin: 0 auto clamp(4px, 0.8vw, 8px) auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      padding: clamp(6px, 1.2vw, 10px) clamp(8px, 1.6vw, 14px);
+      background: var(--bg-header);
+      border-radius: clamp(12px, 2vw, 16px);
+      border: 2px solid var(--border-header);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+      flex-shrink: 0;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: clamp(6px, 1.2vw, 10px);
+      min-width: 0;
+    }
+
+    .brand-icon {
+      font-size: clamp(22px, 4.5vw, 30px);
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-size: clamp(0.9rem, 2.8vw, 1.15rem);
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .brand-subtitle {
+      font-size: clamp(0.62rem, 1.6vw, 0.74rem);
+      color: var(--text-sub);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: clamp(4px, 0.8vw, 7px);
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: clamp(5px, 1vw, 8px) clamp(7px, 1.4vw, 11px);
+      border-radius: clamp(8px, 1.5vw, 12px);
+      font-size: clamp(0.68rem, 1.8vw, 0.78rem);
+      font-weight: 700;
+      border: 1.5px solid var(--btn-border);
+      cursor: pointer;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+      background: var(--btn-active);
+    }
+
+    .btn-muted {
+      opacity: 0.55;
+    }
+
+    @media (max-width: 720px) {
+      .brand-subtitle {
+        display: none;
+      }
+      .btn .btn-text-label {
+        display: none;
+      }
+      .btn {
+        padding: 7px 9px;
+        font-size: 0.95rem;
+      }
+    }
+
+    .task-banner {
+      width: 100%;
+      max-width: 1024px;
+      margin: 0 auto clamp(4px, 0.8vw, 8px) auto;
+      background: var(--bg-header);
+      border: 2px solid var(--border-header);
+      border-radius: clamp(10px, 1.8vw, 14px);
+      padding: clamp(5px, 1vw, 8px) clamp(10px, 2vw, 16px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .task-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .task-banner-icon {
+      width: clamp(28px, 5vw, 38px);
+      height: clamp(28px, 5vw, 38px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .task-banner-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .task-banner-title {
+      font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .task-banner-prompt {
+      font-size: clamp(0.68rem, 2vw, 0.8rem);
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1024px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(6px, 1.4vw, 14px);
+      flex: 1 1 auto;
+      min-height: 0;
+      max-height: 46vh;
+      transition: grid-template-columns 0.2s ease;
+    }
+
+    main[data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    main[data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    main[data-columns="5"] {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media (max-width: 560px) {
+      main[data-columns="4"] {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      main[data-columns="5"] {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .category-zone {
+      position: relative;
+      border: clamp(2.5px, 0.6vw, 4px) dashed var(--btn-border);
+      border-radius: clamp(14px, 3vw, 22px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(6px, 1.2vw, 12px);
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      overflow: hidden;
+    }
+
+    .zone-hidden {
+      display: none !important;
+    }
+
+    .category-zone.zone-step-1 {
+      border-color: var(--zone-1-border);
+      background: var(--zone-1-bg);
+    }
+    .category-zone.zone-step-2 {
+      border-color: var(--zone-2-border);
+      background: var(--zone-2-bg);
+    }
+    .category-zone.zone-step-3 {
+      border-color: var(--zone-3-border);
+      background: var(--zone-3-bg);
+    }
+    .category-zone.zone-step-4 {
+      border-color: var(--zone-4-border);
+      background: var(--zone-4-bg);
+    }
+    .category-zone.zone-step-5 {
+      border-color: var(--zone-5-border);
+      background: var(--zone-5-bg);
+    }
+
+    /* Active next step gentle highlight */
+    .category-zone.zone-next-target {
+      border-style: dashed;
+      box-shadow: 0 0 22px rgba(56, 189, 248, 0.25);
+    }
+
+    .category-zone.zone-future-step {
+      opacity: 0.68;
+    }
+
+    .category-zone.zone-filled {
+      border-style: solid !important;
+      border-color: var(--zone-filled-border) !important;
+      background: var(--zone-filled-bg) !important;
+      opacity: 1 !important;
+      cursor: default;
+      box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.18);
+    }
+
+    .category-zone.zone-hovered {
+      transform: scale(1.03);
+      border-style: solid !important;
+      box-shadow: 0 0 32px rgba(56, 189, 248, 0.85), inset 0 0 24px rgba(56, 189, 248, 0.28) !important;
+      opacity: 1 !important;
+    }
+
+    @keyframes zoneShake {
+      0%, 100% { transform: translateX(0); }
+      18% { transform: translateX(-10px) rotate(-1.5deg); }
+      36% { transform: translateX(9px) rotate(1.2deg); }
+      54% { transform: translateX(-6px) rotate(-0.8deg); }
+      72% { transform: translateX(5px) rotate(0.5deg); }
+      90% { transform: translateX(-2px); }
+    }
+
+    .zone-shake {
+      animation: zoneShake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+      border-color: #ef4444 !important;
+      box-shadow: 0 0 24px rgba(239, 68, 68, 0.55), inset 0 0 16px rgba(239, 68, 68, 0.25) !important;
+    }
+
+    .zone-step-badge {
+      position: absolute;
+      top: clamp(5px, 1vw, 8px);
+      left: clamp(6px, 1.2vw, 10px);
+      font-size: clamp(0.6rem, 1.6vw, 0.72rem);
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.55);
+      color: #f8fafc;
+      pointer-events: none;
+    }
+
+    [data-theme="light"] .zone-step-badge {
+      background: rgba(15, 23, 42, 0.12);
+      color: #0f172a;
+    }
+
+    .zone-check-badge {
+      position: absolute;
+      top: clamp(5px, 1vw, 8px);
+      right: clamp(6px, 1.2vw, 10px);
+      width: clamp(18px, 3.5vw, 24px);
+      height: clamp(18px, 3.5vw, 24px);
+      border-radius: 50%;
+      background: #10b981;
+      color: #ffffff;
+      font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+      font-weight: 900;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .category-zone.zone-filled .zone-check-badge {
+      display: flex;
+    }
+
+    .zone-icon-circle {
+      width: clamp(44px, 10vw, 80px);
+      height: clamp(44px, 10vw, 80px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(22px, 5.5vw, 40px);
+      font-weight: 900;
+      margin-bottom: clamp(2px, 0.6vw, 6px);
+      pointer-events: none;
+      flex-shrink: 0;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .zone-icon-circle svg {
+      width: 68%;
+      height: 68%;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    .zone-step-1 .zone-icon-circle { background: var(--zone-1-circle); border: 2px solid var(--zone-1-circle-border); color: var(--zone-1-heading); }
+    .zone-step-2 .zone-icon-circle { background: var(--zone-2-circle); border: 2px solid var(--zone-2-circle-border); color: var(--zone-2-heading); }
+    .zone-step-3 .zone-icon-circle { background: var(--zone-3-circle); border: 2px solid var(--zone-3-circle-border); color: var(--zone-3-heading); }
+    .zone-step-4 .zone-icon-circle { background: var(--zone-4-circle); border: 2px solid var(--zone-4-circle-border); color: var(--zone-4-heading); }
+    .zone-step-5 .zone-icon-circle { background: var(--zone-5-circle); border: 2px solid var(--zone-5-circle-border); color: var(--zone-5-heading); }
+
+    .category-zone.zone-filled .zone-icon-circle {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: #10b981;
+    }
+
+    .zone-heading {
+      font-size: clamp(0.78rem, 2.4vw, 1.15rem);
+      font-weight: 800;
+      pointer-events: none;
+      line-height: 1.15;
+    }
+
+    .zone-step-1 .zone-heading { color: var(--zone-1-heading); }
+    .zone-step-2 .zone-heading { color: var(--zone-2-heading); }
+    .zone-step-3 .zone-heading { color: var(--zone-3-heading); }
+    .zone-step-4 .zone-heading { color: var(--zone-4-heading); }
+    .zone-step-5 .zone-heading { color: var(--zone-5-heading); }
+    .category-zone.zone-filled .zone-heading { color: var(--text-main); }
+
+    .zone-sub {
+      font-size: clamp(0.58rem, 1.5vw, 0.74rem);
+      font-weight: 600;
+      margin-top: 2px;
+      pointer-events: none;
+      line-height: 1.15;
+    }
+
+    .zone-step-1 .zone-sub { color: var(--zone-1-sub); }
+    .zone-step-2 .zone-sub { color: var(--zone-2-sub); }
+    .zone-step-3 .zone-sub { color: var(--zone-3-sub); }
+    .zone-step-4 .zone-sub { color: var(--zone-4-sub); }
+    .zone-step-5 .zone-sub { color: var(--zone-5-sub); }
+    .category-zone.zone-filled .zone-sub { color: #10b981; font-weight: 800; }
+
+    section#dockContainer {
+      width: 100%;
+      max-width: 1024px;
+      margin: clamp(4px, 0.8vw, 8px) auto 0 auto;
+      background: var(--dock-bg);
+      border: 2px solid var(--dock-border);
+      border-radius: clamp(16px, 3vw, 22px);
+      padding: clamp(8px, 1.4vw, 12px) clamp(10px, 2vw, 14px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .dock-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: clamp(0.65rem, 1.8vw, 0.72rem);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      padding: 0 4px;
+    }
+
+    .counter-pill {
+      background: var(--dock-pill-bg);
+      color: var(--dock-pill-text);
+      border: 1px solid var(--dock-pill-border);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: clamp(0.65rem, 1.8vw, 0.72rem);
+    }
+
+    #itemsDock {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(8px, 1.8vw, 14px);
+      padding: 4px 0;
+      min-height: clamp(76px, 19vw, 114px);
+    }
+
+    .draggable-card {
+      touch-action: none;
+      cursor: grab;
+      will-change: transform;
+      width: clamp(74px, 18vw, 112px);
+      height: clamp(74px, 18vw, 112px);
+      border-radius: clamp(14px, 3vw, 20px);
+      border: clamp(2.5px, 0.6vw, 3.5px) solid var(--card-border);
+      background: var(--card-bg);
+      box-shadow: 0 4px 12px var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.25s ease;
+    }
+
+    .draggable-card:active {
+      cursor: grabbing;
+    }
+
+    .card-selected-glow {
+      border-color: #3b82f6 !important;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5), 0 14px 28px rgba(59, 130, 246, 0.45);
+      animation: cardPulse 1.4s ease-in-out infinite alternate;
+      z-index: 30;
+    }
+
+    .card-dragging {
+      animation: none !important;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(59, 130, 246, 0.6);
+      cursor: grabbing !important;
+      z-index: 50 !important;
+    }
+
+    @keyframes cardPulse {
+      0% { transform: scale(1.14); }
+      100% { transform: scale(1.2); }
+    }
+
+    .card-icon {
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: clamp(38px, 10vw, 60px);
+    }
+
+    .card-icon svg {
+      width: clamp(36px, 9.5vw, 56px);
+      height: clamp(36px, 9.5vw, 56px);
+      pointer-events: none;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    .card-label {
+      font-size: clamp(0.62rem, 2vw, 0.74rem);
+      font-weight: 700;
+      color: var(--card-label);
+      margin-top: 3px;
+      pointer-events: none;
+      text-align: center;
+      line-height: 1.1;
+      padding: 0 2px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    #bslModal {
+      position: fixed;
+      inset: 0;
+      background: var(--modal-overlay);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 16px;
+    }
+
+    #bslModal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #bslCard {
+      background: var(--modal-card-bg);
+      border-radius: 24px;
+      padding: clamp(14px, 4vw, 22px);
+      max-width: 310px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.45);
+      border: 4px solid #10b981;
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    #bslModal.active #bslCard {
+      transform: scale(1);
+    }
+
+    @keyframes bslThankYouSign {
+      0%, 20% {
+        transform: translate(0px, 0px) rotate(0deg);
+      }
+      70%, 100% {
+        transform: translate(-34px, 40px) rotate(-14deg);
+      }
+    }
+
+    .signing-arm-group {
+      transform-origin: 150px 150px;
+      animation: bslThankYouSign 1.4s ease-in-out infinite;
+    }
+
+    #celebrationOverlay {
+      position: fixed;
+      inset: 0;
+      background: var(--overlay-bg);
+      backdrop-filter: blur(8px);
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    #celebrationOverlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #confettiCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .celebration-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .celebration-title {
+      font-size: clamp(1.8rem, 6vw, 2.4rem);
+      font-weight: 900;
+      color: var(--text-main);
+    }
+
+    .celebration-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .celebration-btn {
+      padding: 14px 28px;
+      background: #10b981;
+      color: #ffffff;
+      font-size: clamp(1rem, 3.2vw, 1.2rem);
+      font-weight: 800;
+      border: none;
+      border-radius: 9999px;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.45);
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    .celebration-btn.secondary {
+      background: #3b82f6;
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+    }
+
+    .celebration-btn:active {
+      transform: scale(0.96);
+    }
+
+    .celebration-corner-report-btn {
+      position: absolute;
+      bottom: max(16px, env(safe-area-inset-bottom, 16px));
+      right: max(16px, env(safe-area-inset-right, 16px));
+      z-index: 10;
+      background: var(--bg-header);
+      border: 1.5px solid var(--border-header);
+      color: var(--text-sub);
+      padding: 7px 14px;
+      border-radius: 9999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      opacity: 0.8;
+      transition: opacity 0.15s ease, transform 0.1s ease;
+    }
+
+    .celebration-corner-report-btn:hover {
+      opacity: 1;
+      color: var(--text-main);
+    }
+
+    .celebration-corner-report-btn:active {
+      transform: scale(0.94);
+    }
+
+    #reportModal {
+      position: fixed;
+      inset: 0;
+      background: var(--modal-overlay);
+      backdrop-filter: blur(6px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      padding: 16px;
+    }
+
+    #reportModal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .report-dialog {
+      background: var(--bg-header);
+      border: 2px solid var(--border-header);
+      border-radius: 20px;
+      max-width: 640px;
+      width: 100%;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
+    .report-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1.5px solid var(--border-header);
+    }
+
+    .report-header h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .report-body {
+      padding: 14px 18px;
+      overflow-y: auto;
+      flex: 1 1 auto;
+    }
+
+    #reportTextarea {
+      width: 100%;
+      height: 320px;
+      background: var(--bg-body);
+      color: var(--text-main);
+      border: 1.5px solid var(--btn-border);
+      border-radius: 12px;
+      padding: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      resize: none;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+
+    .report-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 12px 18px;
+      border-top: 1.5px solid var(--border-header);
+      flex-wrap: wrap;
+    }
+
+    .btn-copy-primary {
+      background: #10b981;
+      color: #ffffff;
+      border-color: #059669;
+    }
+
+    .btn-danger-outline {
+      background: transparent;
+      color: #f87171;
+      border-color: #ef4444;
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <header>
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true">👋</span>
+      <div>
+        <h1 class="brand-title">Sequence &amp; Learn</h1>
+        <p class="brand-subtitle">Put the steps in order</p>
+      </div>
+    </div>
+    
+    <div class="controls">
+      <button id="taskToggleBtn" class="btn" aria-label="Switch Task">
+        <span id="taskBtnIcon">🥪</span>
+        <span id="taskBtnLabel" class="btn-text-label">Sandwich</span>
+      </button>
+
+      <button id="levelToggleBtn" class="btn" aria-label="Toggle Step Count">
+        <span id="levelIcon">⭐</span>
+        <span id="levelLabel" class="btn-text-label">3 Steps</span>
+      </button>
+
+      <button id="themeToggleBtn" class="btn" aria-label="Toggle Dark and Light theme">
+        <span id="themeIcon">☀️</span>
+        <span id="themeLabel" class="btn-text-label">Light</span>
+      </button>
+
+      <button id="fullscreenBtn" class="btn" aria-label="Toggle Fullscreen">
+        <span id="fullscreenIcon">⛶</span>
+        <span id="fullscreenLabel" class="btn-text-label">Full</span>
+      </button>
+
+      <button id="soundToggleBtn" class="btn" aria-label="Toggle Sound">
+        <span id="soundIcon">🔊</span>
+        <span id="soundLabel" class="btn-text-label">Sound</span>
+      </button>
+
+      <button id="reportBtn" class="btn" aria-label="View Clinical Session Report">
+        <span>📋</span>
+        <span class="btn-text-label">Report</span>
+      </button>
+
+      <button id="resetButton" class="btn" aria-label="Reset Game">
+        <span>🔄</span>
+        <span class="btn-text-label">Reset</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="task-banner">
+    <div class="task-banner-left">
+      <div id="bannerSvgContainer" class="task-banner-icon"></div>
+      <div id="bannerTaskTitle" class="task-banner-title">Task: Making a Sandwich</div>
+    </div>
+    <div id="bannerNextPrompt" class="task-banner-prompt">Find Step 1: First</div>
+  </div>
+
+  <main id="mainGrid" data-columns="3">
+    <div id="zone-step-1" data-step="1" class="category-zone zone-step-1">
+      <span class="zone-step-badge">Step 1</span>
+      <span class="zone-check-badge">✓</span>
+      <div class="zone-icon-circle">1</div>
+      <h2 class="zone-heading">Step 1</h2>
+      <p class="zone-sub">First</p>
+    </div>
+
+    <div id="zone-step-2" data-step="2" class="category-zone zone-step-2">
+      <span class="zone-step-badge">Step 2</span>
+      <span class="zone-check-badge">✓</span>
+      <div class="zone-icon-circle">2</div>
+      <h2 class="zone-heading">Step 2</h2>
+      <p class="zone-sub">Next</p>
+    </div>
+
+    <div id="zone-step-3" data-step="3" class="category-zone zone-step-3">
+      <span class="zone-step-badge">Step 3</span>
+      <span class="zone-check-badge">✓</span>
+      <div class="zone-icon-circle">3</div>
+      <h2 class="zone-heading">Step 3</h2>
+      <p class="zone-sub">Last</p>
+    </div>
+
+    <div id="zone-step-4" data-step="4" class="category-zone zone-step-4 zone-hidden">
+      <span class="zone-step-badge">Step 4</span>
+      <span class="zone-check-badge">✓</span>
+      <div class="zone-icon-circle">4</div>
+      <h2 class="zone-heading">Step 4</h2>
+      <p class="zone-sub">Last</p>
+    </div>
+
+    <div id="zone-step-5" data-step="5" class="category-zone zone-step-5 zone-hidden">
+      <span class="zone-step-badge">Step 5</span>
+      <span class="zone-check-badge">✓</span>
+      <div class="zone-icon-circle">5</div>
+      <h2 class="zone-heading">Step 5</h2>
+      <p class="zone-sub">Last</p>
+    </div>
+  </main>
+
+  <section id="dockContainer">
+    <div class="dock-header">
+      <span>Symbol Cards to Sequence</span>
+      <span id="counterBadge" class="counter-pill">3 left</span>
+    </div>
+    <div id="itemsDock"></div>
+  </section>
+
+  <div id="bslModal">
+    <div id="bslCard">
+      <div style="width: clamp(140px, 38vw, 180px); height: clamp(140px, 38vw, 180px); margin: 0 auto 8px;">
+        <svg style="width: 100%; height: 100%;" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="92" fill="#042f2e" stroke="#14b8a6" stroke-width="4"/>
+          <path d="M 35 198 C 45 145, 155 145, 165 198 Z" fill="#0d9488"/>
+          <path d="M 85 152 C 95 162, 105 162, 115 152" stroke="#115e59" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <rect x="90" y="125" width="20" height="25" fill="#fdba74" rx="6"/>
+          <circle cx="100" cy="88" r="42" fill="#fed7aa"/>
+          <path d="M 60 85 C 60 50, 140 50, 140 85 C 140 68, 128 60, 100 60 C 72 60, 60 68, 60 85 Z" fill="#78350f"/>
+          <path d="M 82 82 C 86 76, 92 76, 96 82" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M 104 82 C 108 76, 114 76, 118 82" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <ellipse cx="78" cy="94" rx="6" ry="3.5" fill="#fda4af" opacity="0.65"/>
+          <ellipse cx="122" cy="94" rx="6" ry="3.5" fill="#fda4af" opacity="0.65"/>
+          <path d="M 88 104 C 95 116, 105 116, 112 104" stroke="#dc2626" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <g class="signing-arm-group">
+            <path d="M 152 170 Q 132 136 108 112" stroke="#fdba74" stroke-width="13" stroke-linecap="round" fill="none"/>
+            <path d="M 106 114 L 95 98 C 98 92, 107 95, 110 102 L 117 110 Z" fill="#fdba74" stroke="#fb923c" stroke-width="1.5" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </div>
+      <h3 style="font-size: clamp(1.25rem, 4.5vw, 1.5rem); font-weight: 800; color: #10b981;">"Thank You!"</h3>
+      <p style="font-size: clamp(0.7rem, 2.5vw, 0.8rem); font-weight: 600; color: #059669; margin-top: 4px;">BSL: Flat hand glides forward from chin</p>
+    </div>
+  </div>
+
+  <div id="celebrationOverlay">
+    <canvas id="confettiCanvas"></canvas>
+    <div class="celebration-content">
+      <div style="font-size: clamp(3.5rem, 12vw, 5rem); margin-bottom: 8px;">🌟 🎉 🌟</div>
+      <h2 class="celebration-title">Brilliant Sequencing!</h2>
+      <p id="celebrationSubtitle" style="font-size: clamp(0.85rem, 3vw, 1rem); color: var(--text-sub); font-weight: 600; margin-top: 4px;">You put every step in the right order!</p>
+      <div class="celebration-actions">
+        <button id="playAgainBtn" class="celebration-btn">Play Again 🔄</button>
+        <button id="nextTaskCelebrationBtn" class="celebration-btn secondary">Next Task ➡️</button>
+      </div>
+    </div>
+    <button id="celebrationReportBtn" class="celebration-corner-report-btn">📋 Session Report</button>
+  </div>
+
+  <div id="reportModal" role="dialog" aria-labelledby="reportModalTitle">
+    <div class="report-dialog">
+      <div class="report-header">
+        <h3 id="reportModalTitle">📋 Clinical Session Report (SOAP Data)</h3>
+        <button id="closeReportBtn" class="btn">✕ Close</button>
+      </div>
+      <div class="report-body">
+        <textarea id="reportTextarea" readonly></textarea>
+      </div>
+      <div class="report-footer">
+        <button id="clearSessionBtn" class="btn btn-danger-outline">🗑️ Clear Session Data</button>
+        <button id="copyReportBtn" class="btn btn-copy-primary">📋 Copy for SOAP Notes</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================
+       CROSS-BROWSER INLINE SVG SYMBOL LIBRARY
+       ========================================== */
+    const SVG_LIBRARY = {
+      // SANDWICH SVGs
+      'sw-bread': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 42 C14 42 14 22 32 22 C40 22 46 25 50 25 C54 25 60 22 68 22 C86 22 86 42 78 42 L75 82 C75 85 72 88 68 88 L32 88 C28 88 25 85 25 82 Z" fill="#d97706" stroke="#78350f" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M27 44 C20 44 20 28 34 28 C41 28 46 30 50 30 C54 30 59 28 66 28 C80 28 80 44 73 44 L70 80 L30 80 Z" fill="#fef3c7"/>
+        <circle cx="40" cy="54" r="2.5" fill="#d97706" opacity="0.5"/>
+        <circle cx="58" cy="64" r="2.5" fill="#d97706" opacity="0.5"/>
+        <circle cx="48" cy="70" r="2" fill="#d97706" opacity="0.5"/>
+      </svg>`,
+
+      'sw-butter': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="34" width="54" height="48" rx="8" fill="#fde68a" stroke="#b45309" stroke-width="4"/>
+        <path d="M32 48 Q47 38 62 50 Q48 64 32 56 Z" fill="#facc15" stroke="#eab308" stroke-width="2"/>
+        <rect x="52" y="20" width="38" height="11" rx="5" transform="rotate(28 52 20)" fill="#cbd5e1" stroke="#475569" stroke-width="3"/>
+        <rect x="76" y="32" width="18" height="11" rx="4" transform="rotate(28 76 32)" fill="#78350f" stroke="#451a03" stroke-width="3"/>
+      </svg>`,
+
+      'sw-cheese': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="36" width="56" height="48" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="3.5"/>
+        <path d="M16 42 Q28 28 42 40 Q56 26 70 40 Q82 32 82 48 L72 68 L22 68 Z" fill="#22c55e" stroke="#15803d" stroke-width="3"/>
+        <polygon points="24,28 84,38 64,82 18,68" fill="#facc15" stroke="#ca8a04" stroke-width="3.5" stroke-linejoin="round"/>
+        <circle cx="44" cy="48" r="5.5" fill="#eab308"/>
+        <circle cx="62" cy="56" r="4.5" fill="#eab308"/>
+        <circle cx="38" cy="64" r="3.5" fill="#eab308"/>
+      </svg>`,
+
+      'sw-top': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="64" width="64" height="16" rx="5" fill="#fef3c7" stroke="#b45309" stroke-width="3.5"/>
+        <path d="M15 62 Q32 54 50 62 Q68 54 85 62" stroke="#22c55e" stroke-width="7" stroke-linecap="round" fill="none"/>
+        <path d="M18 57 L82 57" stroke="#facc15" stroke-width="6" stroke-linecap="round"/>
+        <rect x="18" y="34" width="64" height="16" rx="6" fill="#fde68a" stroke="#b45309" stroke-width="3.5"/>
+        <path d="M50 12 L50 28 M42 22 L50 30 L58 22" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>`,
+
+      'sw-cut': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="14,76 14,30 58,76" fill="#fef3c7" stroke="#b45309" stroke-width="3.5" stroke-linejoin="round"/>
+        <line x1="16" y1="72" x2="54" y2="72" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
+        <polygon points="42,24 86,24 86,70" fill="#fde68a" stroke="#b45309" stroke-width="3.5" stroke-linejoin="round"/>
+        <line x1="46" y1="28" x2="82" y2="64" stroke="#facc15" stroke-width="4" stroke-linecap="round"/>
+        <line x1="22" y1="20" x2="78" y2="80" stroke="#ef4444" stroke-width="3" stroke-dasharray="5 5"/>
+      </svg>`,
+
+      // TEA SVGs
+      'tea-kettle': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 78 L32 38 C33 30 63 30 64 38 L70 78 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M64 42 C82 42 82 68 68 68" stroke="#334155" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <polygon points="28,46 14,36 22,56" fill="#38bdf8" stroke="#0284c7" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="22" y="78" width="52" height="8" rx="4" fill="#475569"/>
+        <path d="M36 24 Q32 16 38 10 M48 22 Q44 14 50 8 M60 24 Q56 16 62 10" stroke="#94a3b8" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      </svg>`,
+
+      'tea-bag': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M66 46 C82 46 82 72 66 72" stroke="#dc2626" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <rect x="24" y="38" width="44" height="46" rx="8" fill="#ef4444" stroke="#b91c1c" stroke-width="4"/>
+        <polygon points="36,30 56,30 60,54 32,54" fill="#fef3c7" stroke="#b45309" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="46" cy="44" r="5" fill="#92400e" opacity="0.6"/>
+        <path d="M46 30 L46 14 L64 14" stroke="#cbd5e1" stroke-width="2.5" fill="none"/>
+        <rect x="60" y="10" width="12" height="14" rx="2" fill="#22c55e" stroke="#15803d" stroke-width="2"/>
+      </svg>`,
+
+      'tea-pour': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g transform="rotate(-28 34 26)">
+          <path d="M16 42 L20 18 L44 18 L48 42 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="3"/>
+          <polygon points="46,24 58,18 50,32" fill="#38bdf8" stroke="#0284c7" stroke-width="2.5"/>
+        </g>
+        <path d="M52 34 Q56 48 54 62" stroke="#60a5fa" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M72 58 C84 58 84 78 72 78" stroke="#dc2626" stroke-width="5" fill="none"/>
+        <rect x="34" y="52" width="38" height="36" rx="6" fill="#ef4444" stroke="#b91c1c" stroke-width="3.5"/>
+      </svg>`,
+
+      'tea-milk': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="16" y="22" width="28" height="42" rx="4" transform="rotate(24 16 22)" fill="#f8fafc" stroke="#0284c7" stroke-width="3.5"/>
+        <rect x="20" y="34" width="24" height="12" transform="rotate(24 20 34)" fill="#38bdf8"/>
+        <path d="M44 44 Q52 54 52 64" stroke="#ffffff" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M74 60 C86 60 86 80 74 80" stroke="#dc2626" stroke-width="5" fill="none"/>
+        <rect x="36" y="54" width="38" height="34" rx="6" fill="#ef4444" stroke="#b91c1c" stroke-width="3.5"/>
+      </svg>`,
+
+      'tea-stir': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <line x1="68" y1="16" x2="48" y2="58" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+        <path d="M70 54 C86 54 86 80 70 80" stroke="#dc2626" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <rect x="26" y="44" width="44" height="44" rx="8" fill="#ef4444" stroke="#b91c1c" stroke-width="4"/>
+        <ellipse cx="48" cy="46" rx="18" ry="5" fill="#d97706"/>
+        <path d="M36 32 Q50 24 60 32" stroke="#fde68a" stroke-width="3" stroke-linecap="round" fill="none"/>
+      </svg>`,
+
+      // BINS SVGs
+      'bin-tie': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M38 28 L30 14 L46 20 L50 12 L54 20 L70 14 L62 28 Z" fill="#334155" stroke="#0f172a" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M36 28 C20 42 18 78 32 86 L68 86 C82 78 80 42 64 28 Z" fill="#475569" stroke="#1e293b" stroke-width="4" stroke-linejoin="round"/>
+        <rect x="35" y="25" width="30" height="7" rx="3.5" fill="#ef4444"/>
+        <path d="M36 52 Q42 66 38 74 M62 48 Q66 62 60 72" stroke="#64748b" stroke-width="3" stroke-linecap="round" fill="none"/>
+      </svg>`,
+
+      'bin-lift': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="28,54 72,54 66,88 34,88" fill="#94a3b8" stroke="#475569" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M50 12 L50 30 M42 20 L50 10 L58 20" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M40 34 C30 42 30 58 38 62 L62 62 C70 58 70 42 60 34 Z" fill="#334155" stroke="#0f172a" stroke-width="3.5"/>
+        <rect x="39" y="31" width="22" height="5" rx="2.5" fill="#ef4444"/>
+      </svg>`,
+
+      'bin-open': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="30,42 68,42 63,84 35,84" fill="#16a34a" stroke="#14532d" stroke-width="4" stroke-linejoin="round"/>
+        <rect x="26" y="38" width="44" height="6" rx="3" transform="rotate(-34 28 40)" fill="#22c55e" stroke="#14532d" stroke-width="3.5"/>
+        <circle cx="34" cy="84" r="7" fill="#1e293b" stroke="#cbd5e1" stroke-width="2.5"/>
+        <path d="M48 16 Q62 16 66 28" stroke="#fbbf24" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      </svg>`,
+
+      'bin-put': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="30,48 70,48 64,86 36,86" fill="#16a34a" stroke="#14532d" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="36" cy="86" r="7" fill="#1e293b" stroke="#cbd5e1" stroke-width="2.5"/>
+        <path d="M42 22 C34 28 34 44 40 48 L60 48 C66 44 66 28 58 22 Z" fill="#334155" stroke="#0f172a" stroke-width="3.5"/>
+        <rect x="41" y="19" width="18" height="5" rx="2" fill="#ef4444"/>
+        <path d="M50 6 L50 16 M44 12 L50 18 L56 12" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>`,
+
+      'bin-wheel': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <line x1="10" y1="86" x2="90" y2="86" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+        <g transform="rotate(-12 46 56)">
+          <polygon points="28,32 64,32 60,80 32,80" fill="#16a34a" stroke="#14532d" stroke-width="4" stroke-linejoin="round"/>
+          <rect x="25" y="26" width="42" height="7" rx="3" fill="#22c55e" stroke="#14532d" stroke-width="3.5"/>
+        </g>
+        <circle cx="34" cy="80" r="8" fill="#1e293b" stroke="#cbd5e1" stroke-width="3"/>
+        <path d="M70 52 L88 52 M80 44 L88 52 L80 60" stroke="#fbbf24" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>`
+    };
+
+    /* ==========================================
+       SEQUENCING TASK DEFINITIONS (3, 4, 5 STEPS)
+       ========================================== */
+    const TASKS = {
+      sandwich: {
+        key: 'sandwich',
+        name: 'Making a Sandwich',
+        shortLabel: 'Sandwich',
+        emoji: '🥪',
+        bannerSvg: 'sw-cheese',
+        sequences: {
+          3: [
+            { id: 'sw-3-1', step: 1, label: 'Get bread', svg: 'sw-bread' },
+            { id: 'sw-3-2', step: 2, label: 'Add filling', svg: 'sw-cheese' },
+            { id: 'sw-3-3', step: 3, label: 'Cut & eat', svg: 'sw-cut' }
+          ],
+          4: [
+            { id: 'sw-4-1', step: 1, label: 'Get bread', svg: 'sw-bread' },
+            { id: 'sw-4-2', step: 2, label: 'Butter bread', svg: 'sw-butter' },
+            { id: 'sw-4-3', step: 3, label: 'Add filling', svg: 'sw-cheese' },
+            { id: 'sw-4-4', step: 4, label: 'Top slice on', svg: 'sw-top' }
+          ],
+          5: [
+            { id: 'sw-5-1', step: 1, label: 'Get bread', svg: 'sw-bread' },
+            { id: 'sw-5-2', step: 2, label: 'Butter bread', svg: 'sw-butter' },
+            { id: 'sw-5-3', step: 3, label: 'Add filling', svg: 'sw-cheese' },
+            { id: 'sw-5-4', step: 4, label: 'Top slice on', svg: 'sw-top' },
+            { id: 'sw-5-5', step: 5, label: 'Cut sandwich', svg: 'sw-cut' }
+          ]
+        }
+      },
+      tea: {
+        key: 'tea',
+        name: 'Making a Cup of Tea',
+        shortLabel: 'Cup of Tea',
+        emoji: '☕',
+        bannerSvg: 'tea-stir',
+        sequences: {
+          3: [
+            { id: 'tea-3-1', step: 1, label: 'Boil kettle', svg: 'tea-kettle' },
+            { id: 'tea-3-2', step: 2, label: 'Pour water', svg: 'tea-pour' },
+            { id: 'tea-3-3', step: 3, label: 'Add milk & stir', svg: 'tea-stir' }
+          ],
+          4: [
+            { id: 'tea-4-1', step: 1, label: 'Boil kettle', svg: 'tea-kettle' },
+            { id: 'tea-4-2', step: 2, label: 'Teabag in mug', svg: 'tea-bag' },
+            { id: 'tea-4-3', step: 3, label: 'Pour water', svg: 'tea-pour' },
+            { id: 'tea-4-4', step: 4, label: 'Add milk & stir', svg: 'tea-stir' }
+          ],
+          5: [
+            { id: 'tea-5-1', step: 1, label: 'Boil kettle', svg: 'tea-kettle' },
+            { id: 'tea-5-2', step: 2, label: 'Teabag in mug', svg: 'tea-bag' },
+            { id: 'tea-5-3', step: 3, label: 'Pour water', svg: 'tea-pour' },
+            { id: 'tea-5-4', step: 4, label: 'Add milk', svg: 'tea-milk' },
+            { id: 'tea-5-5', step: 5, label: 'Stir tea', svg: 'tea-stir' }
+          ]
+        }
+      },
+      bins: {
+        key: 'bins',
+        name: 'Putting the Bins Out',
+        shortLabel: 'Bins Out',
+        emoji: '🗑️',
+        bannerSvg: 'bin-wheel',
+        sequences: {
+          3: [
+            { id: 'bin-3-1', step: 1, label: 'Tie bin bag', svg: 'bin-tie' },
+            { id: 'bin-3-2', step: 2, label: 'Put in big bin', svg: 'bin-put' },
+            { id: 'bin-3-3', step: 3, label: 'Wheel bin out', svg: 'bin-wheel' }
+          ],
+          4: [
+            { id: 'bin-4-1', step: 1, label: 'Tie bin bag', svg: 'bin-tie' },
+            { id: 'bin-4-2', step: 2, label: 'Open big bin', svg: 'bin-open' },
+            { id: 'bin-4-3', step: 3, label: 'Bag in bin', svg: 'bin-put' },
+            { id: 'bin-4-4', step: 4, label: 'Wheel bin out', svg: 'bin-wheel' }
+          ],
+          5: [
+            { id: 'bin-5-1', step: 1, label: 'Tie bin bag', svg: 'bin-tie' },
+            { id: 'bin-5-2', step: 2, label: 'Take bag out', svg: 'bin-lift' },
+            { id: 'bin-5-3', step: 3, label: 'Open big bin', svg: 'bin-open' },
+            { id: 'bin-5-4', step: 4, label: 'Bag in bin', svg: 'bin-put' },
+            { id: 'bin-5-5', step: 5, label: 'Wheel bin out', svg: 'bin-wheel' }
+          ]
+        }
+      }
+    };
+
+    const TASK_ORDER = ['sandwich', 'tea', 'bins'];
+
+    const ORDINAL_SUBTITLES = {
+      3: ['First', 'Next', 'Last'],
+      4: ['First', 'Next', 'Then', 'Last'],
+      5: ['First', 'Second', 'Third', 'Then', 'Last']
+    };
+
+    /* ==========================================
+       AUDIO & SYNTHESIS ENGINE
+       ========================================== */
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    const soundFiles = {
+      select: new Audio('select.mp3'),
+      correct: new Audio('correct.mp3'),
+      incorrect: new Audio('incorrect.mp3'),
+      fanfare: new Audio('fanfare.mp3')
+    };
+
+    let isMuted = false;
+
+    function playTone(freq, type, duration, delay = 0) {
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + delay);
+        gain.gain.setValueAtTime(0.12, ctx.currentTime + delay);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + delay + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + delay);
+        osc.stop(ctx.currentTime + delay + duration);
+      } catch (e) {}
+    }
+
+    function playSound(name) {
+      if (isMuted) return;
+      const file = soundFiles[name];
+      if (file && file.src && !file.src.endsWith('.html')) {
+        file.currentTime = 0;
+        file.play().catch(() => playSyntheticSound(name));
+      } else {
+        playSyntheticSound(name);
+      }
+    }
+
+    function playSyntheticSound(name) {
+      if (name === 'select') playTone(540, 'sine', 0.08);
+      if (name === 'correct') {
+        playTone(523.25, 'triangle', 0.12, 0);
+        playTone(659.25, 'triangle', 0.18, 0.1);
+      }
+      if (name === 'incorrect') {
+        playTone(220, 'sawtooth', 0.18, 0);
+        playTone(180, 'sawtooth', 0.22, 0.12);
+      }
+      if (name === 'fanfare') {
+        [523, 659, 784, 1046].forEach((f, idx) => {
+          playTone(f, 'sine', 0.35, idx * 0.12);
+        });
+      }
+    }
+
+    function toggleSound() {
+      isMuted = !isMuted;
+      const soundIcon = document.getElementById('soundIcon');
+      const soundLabel = document.getElementById('soundLabel');
+      const btn = document.getElementById('soundToggleBtn');
+      if (!isMuted) {
+        soundIcon.textContent = '🔊';
+        soundLabel.textContent = 'Sound';
+        btn.classList.remove('btn-muted');
+        playSound('select');
+      } else {
+        soundIcon.textContent = '🔇';
+        soundLabel.textContent = 'Mute';
+        btn.classList.add('btn-muted');
+      }
+    }
+
+    /* ==========================================
+       THEME & FULLSCREEN CONTROLS
+       ========================================== */
+    function applyTheme(theme) {
+      document.body.setAttribute('data-theme', theme);
+      const icon = document.getElementById('themeIcon');
+      const label = document.getElementById('themeLabel');
+      
+      if (theme === 'light') {
+        icon.textContent = '🌙';
+        label.textContent = 'Dark';
+      } else {
+        icon.textContent = '☀️';
+        label.textContent = 'Light';
+      }
+
+      try {
+        localStorage.setItem('sequence_learn_theme', theme);
+      } catch (e) {}
+    }
+
+    function toggleTheme() {
+      const current = document.body.getAttribute('data-theme') || 'dark';
+      const nextTheme = current === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+      playSound('select');
+    }
+
+    function initTheme() {
+      let savedTheme = 'dark';
+      try {
+        savedTheme = localStorage.getItem('sequence_learn_theme') || 'dark';
+      } catch (e) {}
+      applyTheme(savedTheme);
+    }
+
+    function toggleFullscreen() {
+      const doc = document;
+      const docEl = document.documentElement;
+
+      const isFullscreen = doc.fullscreenElement || doc.webkitFullscreenElement || doc.mozFullScreenElement || doc.msFullscreenElement;
+      const requestFs = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen || docEl.msRequestFullscreen;
+      const exitFs = doc.exitFullscreen || doc.webkitExitFullscreen || doc.mozCancelFullScreen || doc.msExitFullscreen;
+
+      if (!isFullscreen) {
+        if (requestFs) {
+          requestFs.call(docEl).catch(() => {});
+        }
+      } else {
+        if (exitFs) {
+          exitFs.call(doc).catch(() => {});
+        }
+      }
+    }
+
+    function updateFullscreenUI() {
+      const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement;
+      const icon = document.getElementById('fullscreenIcon');
+      const label = document.getElementById('fullscreenLabel');
+      if (isFullscreen) {
+        icon.textContent = '🗗';
+        label.textContent = 'Exit';
+      } else {
+        icon.textContent = '⛶';
+        label.textContent = 'Full';
+      }
+    }
+
+    document.addEventListener('fullscreenchange', updateFullscreenUI);
+    document.addEventListener('webkitfullscreenchange', updateFullscreenUI);
+
+    /* ==========================================
+       SOAP REPORT & CLINICAL TELEMETRY ENGINE
+       ========================================== */
+    let sessionRounds = [];
+    let currentRoundStats = null;
+    let activeCardTouchStart = null;
+
+    function createFreshRoundStats(taskKey, stepCount) {
+      const taskObj = TASKS[taskKey];
+      return {
+        roundNumber: sessionRounds.length + 1,
+        taskKey: taskKey,
+        taskName: taskObj.name,
+        stepCount: stepCount,
+        totalItems: stepCount,
+        startTime: Date.now(),
+        firstInteractionTime: null,
+        endTime: null,
+        totalAttempts: 0,
+        firstTrySuccesses: 0,
+        attemptedSteps: new Set(),
+        errors: [],
+        dragPlacements: 0,
+        tapPlacements: 0,
+        offTargetDrops: 0,
+        decisionLatenciesMs: [],
+        completed: false
+      };
+    }
+
+    function markInteractionStart() {
+      if (currentRoundStats && !currentRoundStats.firstInteractionTime) {
+        currentRoundStats.firstInteractionTime = Date.now();
+      }
+      activeCardTouchStart = Date.now();
+    }
+
+    function recordPlacementAttempt(cardElement, targetZone, isCorrect, method) {
+      if (!currentRoundStats) return;
+      if (!currentRoundStats.firstInteractionTime) {
+        currentRoundStats.firstInteractionTime = Date.now();
+      }
+
+      currentRoundStats.totalAttempts++;
+      if (method === 'drag') {
+        currentRoundStats.dragPlacements++;
+      } else {
+        currentRoundStats.tapPlacements++;
+      }
+
+      if (activeCardTouchStart) {
+        const latency = Math.max(100, Date.now() - activeCardTouchStart);
+        currentRoundStats.decisionLatenciesMs.push(latency);
+        activeCardTouchStart = null;
+      }
+
+      const cardStep = Number(cardElement.dataset.step);
+      const targetStep = Number(targetZone.dataset.step);
+      const itemLabel = cardElement.dataset.label || `Step ${cardStep}`;
+
+      const isFirstTryForExpectedStep = !currentRoundStats.attemptedSteps.has(expectedStep);
+
+      if (isCorrect) {
+        currentRoundStats.attemptedSteps.add(expectedStep);
+        if (isFirstTryForExpectedStep) {
+          currentRoundStats.firstTrySuccesses++;
+        }
+      } else {
+        currentRoundStats.attemptedSteps.add(expectedStep);
+        let errorType = 'Sequence order error';
+        if (targetStep !== expectedStep) {
+          errorType = `Targeted Step ${targetStep} slot while Step ${expectedStep} was next`;
+        } else {
+          errorType = `Selected "${itemLabel}" (Step ${cardStep}) for Step ${expectedStep}`;
+        }
+        currentRoundStats.errors.push({
+          itemLabel,
+          cardStep,
+          targetStep,
+          expectedStep,
+          detail: errorType
+        });
+      }
+    }
+
+    function recordOffTargetDrop() {
+      if (!currentRoundStats) return;
+      currentRoundStats.offTargetDrops++;
+    }
+
+    function finalizeCurrentRound() {
+      if (!currentRoundStats || currentRoundStats.completed) return;
+      currentRoundStats.endTime = Date.now();
+      currentRoundStats.completed = true;
+      sessionRounds.push(currentRoundStats);
+    }
+
+    function formatDuration(ms) {
+      const totalSec = Math.max(1, Math.round(ms / 1000));
+      const mins = Math.floor(totalSec / 60);
+      const secs = totalSec % 60;
+      return mins > 0 ? `${mins}m${secs}s` : `${secs}s`;
+    }
+
+    function generateClinicalReportText() {
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+      const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
+      const allRoundsToReport = [...sessionRounds];
+      if (currentRoundStats && !currentRoundStats.completed && currentRoundStats.totalAttempts > 0) {
+        allRoundsToReport.push({
+          ...currentRoundStats,
+          endTime: Date.now(),
+          inProgress: true,
+          sequencedSoFar: currentRoundStats.totalItems - document.getElementById('itemsDock').children.length
+        });
+      }
+
+      if (allRoundsToReport.length === 0) {
+        return `==================================================\nSESSION REPORT: SEQUENCE & LEARN\nDate: ${dateStr} (${timeStr})\n==================================================\n\nNo sequencing attempts recorded in this session yet.\nComplete or attempt a task and open this report at any time.`;
+      }
+
+      let totalDurationMs = 0;
+      let totalStepsPossible = 0;
+      let totalFirstTrySuccess = 0;
+      let totalAttemptsAll = 0;
+      let totalDragCount = 0;
+      let totalTapCount = 0;
+      let totalOffTarget = 0;
+
+      const byStepLoad = {
+        3: { firstTry: 0, total: 0, latencies: [] },
+        4: { firstTry: 0, total: 0, latencies: [] },
+        5: { firstTry: 0, total: 0, latencies: [] }
+      };
+
+      const byTaskPerf = {};
+      let allErrors = [];
+
+      const roundLines = allRoundsToReport.map((r, idx) => {
+        const startRef = r.firstInteractionTime || r.startTime;
+        const durMs = Math.max(1000, (r.endTime || Date.now()) - startRef);
+        totalDurationMs += durMs;
+
+        const stepsDenominator = r.inProgress ? Math.max(1, r.sequencedSoFar) : r.totalItems;
+        totalStepsPossible += stepsDenominator;
+        totalFirstTrySuccess += r.firstTrySuccesses;
+        totalAttemptsAll += r.totalAttempts;
+        totalDragCount += r.dragPlacements;
+        totalTapCount += r.tapPlacements;
+        totalOffTarget += r.offTargetDrops;
+
+        if (byStepLoad[r.stepCount]) {
+          byStepLoad[r.stepCount].firstTry += r.firstTrySuccesses;
+          byStepLoad[r.stepCount].total += stepsDenominator;
+          byStepLoad[r.stepCount].latencies.push(...r.decisionLatenciesMs);
+        }
+
+        if (!byTaskPerf[r.taskName]) {
+          byTaskPerf[r.taskName] = { firstTry: 0, total: 0 };
+        }
+        byTaskPerf[r.taskName].firstTry += r.firstTrySuccesses;
+        byTaskPerf[r.taskName].total += stepsDenominator;
+
+        allErrors.push(...r.errors.map(e => ({ ...e, taskName: r.taskName })));
+
+        const accPct = ((r.firstTrySuccesses / stepsDenominator) * 100).toFixed(1).replace(/\.0$/, '');
+        const avgLatSec = r.decisionLatenciesMs.length > 0
+          ? ((r.decisionLatenciesMs.reduce((a, b) => a + b, 0) / r.decisionLatenciesMs.length) / 1000).toFixed(1)
+          : 'N/A';
+
+        const totalInputs = r.dragPlacements + r.tapPlacements;
+        let inputSummary = 'None';
+        if (totalInputs > 0) {
+          const tapPct = Math.round((r.tapPlacements / totalInputs) * 100);
+          const dragPct = 100 - tapPct;
+          if (tapPct === 100) inputSummary = '100% Tap-to-select';
+          else if (dragPct === 100) inputSummary = '100% Drag-and-drop';
+          else inputSummary = `${tapPct}% Tap / ${dragPct}% Drag`;
+        }
+
+        const errorDetails = r.errors.length === 0
+          ? '0 sequencing errors'
+          : `${r.errors.length} error(s): ` + r.errors.map(e => e.detail).join('; ');
+
+        const statusTag = r.inProgress ? ` [INCOMPLETE: ${r.sequencedSoFar}/${r.totalItems} steps]` : '';
+
+        return [
+          `Round ${idx + 1} (${r.taskName} - ${r.stepCount}-Step Sequence)${statusTag}:`,
+          `• Duration: ${formatDuration(durMs)} (avg latency: ${avgLatSec}s/step)`,
+          `• First-Attempt Accuracy: ${accPct}% (${r.firstTrySuccesses}/${stepsDenominator} steps errorless)`,
+          `• Total Attempts: ${r.totalAttempts} (${errorDetails})`,
+          `• Input & Motor: ${inputSummary} | Off-target drops: ${r.offTargetDrops}`
+        ].join('\n');
+      });
+
+      const overallAcc = ((totalFirstTrySuccess / Math.max(1, totalStepsPossible)) * 100).toFixed(1);
+      const totalInputsSession = totalDragCount + totalTapCount;
+      let sessionInputStr = 'N/A';
+      if (totalInputsSession > 0) {
+        const tapP = Math.round((totalTapCount / totalInputsSession) * 100);
+        const dragP = 100 - tapP;
+        sessionInputStr = `${tapP}% Tap-to-select, ${dragP}% Drag-and-drop`;
+      }
+
+      const loadLines = [];
+      [3, 4, 5].forEach(sc => {
+        const bucket = byStepLoad[sc];
+        if (bucket.total > 0) {
+          const pct = ((bucket.firstTry / bucket.total) * 100).toFixed(1);
+          const avgLat = bucket.latencies.length > 0
+            ? ((bucket.latencies.reduce((a, b) => a + b, 0) / bucket.latencies.length) / 1000).toFixed(1) + 's'
+            : 'N/A';
+          loadLines.push(`  - ${sc}-Step Sequences: ${pct}% (${bucket.firstTry}/${bucket.total}) | Avg response: ${avgLat}`);
+        }
+      });
+
+      const taskLines = Object.entries(byTaskPerf).map(([tName, stats]) => {
+        const pct = ((stats.firstTry / Math.max(1, stats.total)) * 100).toFixed(1);
+        return `  - ${tName}: ${pct}% (${stats.firstTry}/${stats.total} steps on 1st attempt)`;
+      });
+
+      let errorPatternSummary = 'None (100% errorless sequencing across all attempts)';
+      if (allErrors.length > 0) {
+        const counts = {};
+        allErrors.forEach(e => {
+          const key = `[${e.taskName}] ${e.detail}`;
+          counts[key] = (counts[key] || 0) + 1;
+        });
+        errorPatternSummary = Object.entries(counts)
+          .map(([k, v]) => `${k} (${v}x)`)
+          .join('; ');
+      }
+
+      return [
+        `==================================================`,
+        `SESSION REPORT: SEQUENCE & LEARN (ADL SEQUENCING)`,
+        `Date: ${dateStr} (${timeStr}) | Sequences Logged: ${allRoundsToReport.length}`,
+        `Total Active Time: ${formatDuration(totalDurationMs)}`,
+        `==================================================`,
+        ``,
+        `--- ROUND-BY-ROUND BREAKDOWN ---`,
+        ``,
+        roundLines.join('\n\n'),
+        ``,
+        `--- SESSION AGGREGATE SUMMARY (FOR SOAP NOTES) ---`,
+        ``,
+        `• Overall First-Attempt Accuracy: ${overallAcc}% (${totalFirstTrySuccess}/${totalStepsPossible} steps sequenced on 1st try)`,
+        `• Total Placements vs Target Steps: ${totalAttemptsAll} attempts for ${totalStepsPossible} steps`,
+        `• Performance by Sequence Length (Cognitive Load):`,
+        ...loadLines,
+        `• Performance by Functional Task (ADL):`,
+        ...taskLines,
+        `• Sequencing Errors Logged: ${errorPatternSummary}`,
+        `• Motor & Access Profile: ${sessionInputStr}; ${totalOffTarget} off-target drop(s)/snap-backs`,
+        `==================================================`
+      ].join('\n');
+    }
+
+    function openReportModal() {
+      const modal = document.getElementById('reportModal');
+      const textarea = document.getElementById('reportTextarea');
+      textarea.value = generateClinicalReportText();
+      modal.classList.add('active');
+      playSound('select');
+    }
+
+    function closeReportModal() {
+      document.getElementById('reportModal').classList.remove('active');
+    }
+
+    function copyReportToClipboard() {
+      const textarea = document.getElementById('reportTextarea');
+      const copyBtn = document.getElementById('copyReportBtn');
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+
+      const confirmCopied = () => {
+        const orig = copyBtn.textContent;
+        copyBtn.textContent = '✅ Copied to Clipboard!';
+        setTimeout(() => { copyBtn.textContent = orig; }, 2000);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(textarea.value).then(confirmCopied).catch(() => {
+          document.execCommand('copy');
+          confirmCopied();
+        });
+      } else {
+        document.execCommand('copy');
+        confirmCopied();
+      }
+    }
+
+    function clearSessionHistory() {
+      sessionRounds = [];
+      currentRoundStats = createFreshRoundStats(currentTaskKey, currentStepCount);
+      document.getElementById('reportTextarea').value = generateClinicalReportText();
+    }
+
+    /* ==========================================
+       GAME STATE & SEQUENCING LOGIC
+       ========================================== */
+    let currentTaskKey = 'sandwich';
+    let currentStepCount = 3; // 3, 4, or 5
+    let expectedStep = 1;
+    let selectedItemElement = null;
+    let isProcessing = false;
+
+    const itemsDock = document.getElementById('itemsDock');
+    const counterBadge = document.getElementById('counterBadge');
+    const bslModal = document.getElementById('bslModal');
+    const celebrationOverlay = document.getElementById('celebrationOverlay');
+    const mainGrid = document.getElementById('mainGrid');
+
+    function toggleTask() {
+      const idx = TASK_ORDER.indexOf(currentTaskKey);
+      currentTaskKey = TASK_ORDER[(idx + 1) % TASK_ORDER.length];
+      updateTaskAndLevelButtonsUI();
+      playSound('select');
+      initGame();
+    }
+
+    function toggleLevel() {
+      if (currentStepCount === 3) currentStepCount = 4;
+      else if (currentStepCount === 4) currentStepCount = 5;
+      else currentStepCount = 3;
+      updateTaskAndLevelButtonsUI();
+      playSound('select');
+      initGame();
+    }
+
+    function updateTaskAndLevelButtonsUI() {
+      const taskObj = TASKS[currentTaskKey];
+      document.getElementById('taskBtnIcon').textContent = taskObj.emoji;
+      document.getElementById('taskBtnLabel').textContent = taskObj.shortLabel;
+
+      const levelLabel = document.getElementById('levelLabel');
+      const levelIcon = document.getElementById('levelIcon');
+      levelLabel.textContent = `${currentStepCount} Steps`;
+      levelIcon.textContent = '⭐'.repeat(currentStepCount - 2);
+    }
+
+    function getActiveZones() {
+      return Array.from(document.querySelectorAll('.category-zone')).filter(z => !z.classList.contains('zone-hidden'));
+    }
+
+    function shuffleJumbled(items) {
+      const copy = [...items];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      // Guarantee cards are never already in 1-2-3-4-5 sequential order
+      const isAlreadySorted = copy.every((item, idx) => item.step === idx + 1);
+      if (isAlreadySorted && copy.length > 1) {
+        [copy[0], copy[copy.length - 1]] = [copy[copy.length - 1], copy[0]];
+      }
+      return copy;
+    }
+
+    function updateZoneVisualStates() {
+      const ordinals = ORDINAL_SUBTITLES[currentStepCount];
+      getActiveZones().forEach(zone => {
+        const stepNum = Number(zone.dataset.step);
+        zone.classList.remove('zone-next-target', 'zone-future-step');
+        if (!zone.classList.contains('zone-filled')) {
+          if (stepNum === expectedStep) {
+            zone.classList.add('zone-next-target');
+          } else if (stepNum > expectedStep) {
+            zone.classList.add('zone-future-step');
+          }
+        }
+      });
+
+      const promptEl = document.getElementById('bannerNextPrompt');
+      if (expectedStep <= currentStepCount) {
+        const ordWord = ordinals[expectedStep - 1] || `Step ${expectedStep}`;
+        promptEl.textContent = `Find Step ${expectedStep}: ${ordWord}`;
+      } else {
+        promptEl.textContent = `All ${currentStepCount} Steps Complete! ✓`;
+      }
+    }
+
+    function initGame() {
+      isProcessing = false;
+      expectedStep = 1;
+      celebrationOverlay.classList.remove('active');
+      bslModal.classList.remove('active');
+      stopConfettiFountains();
+      deselectCard();
+      itemsDock.innerHTML = '';
+
+      const taskObj = TASKS[currentTaskKey];
+      document.getElementById('bannerSvgContainer').innerHTML = SVG_LIBRARY[taskObj.bannerSvg] || '';
+      document.getElementById('bannerTaskTitle').textContent = `Task: ${taskObj.name}`;
+      document.getElementById('celebrationSubtitle').textContent = `You sequenced "${taskObj.name}" (${currentStepCount} steps)!`;
+
+      mainGrid.setAttribute('data-columns', String(currentStepCount));
+      const ordinals = ORDINAL_SUBTITLES[currentStepCount];
+
+      for (let i = 1; i <= 5; i++) {
+        const zone = document.getElementById(`zone-step-${i}`);
+        zone.classList.remove('zone-filled', 'zone-hovered', 'zone-shake', 'zone-next-target', 'zone-future-step');
+        if (i <= currentStepCount) {
+          zone.classList.remove('zone-hidden');
+          zone.querySelector('.zone-icon-circle').innerHTML = String(i);
+          zone.querySelector('.zone-heading').textContent = `Step ${i}`;
+          zone.querySelector('.zone-sub').textContent = ordinals[i - 1];
+        } else {
+          zone.classList.add('zone-hidden');
+        }
+      }
+
+      const sequenceSteps = taskObj.sequences[currentStepCount];
+      const jumbledCards = shuffleJumbled(sequenceSteps);
+
+      currentRoundStats = createFreshRoundStats(currentTaskKey, currentStepCount);
+
+      jumbledCards.forEach(item => {
+        const card = createCardElement(item);
+        itemsDock.appendChild(card);
+      });
+
+      updateBadge();
+      updateZoneVisualStates();
+    }
+
+    function updateBadge() {
+      const count = itemsDock.children.length;
+      counterBadge.textContent = `${count} left`;
+    }
+
+    function createCardElement(item) {
+      const card = document.createElement('div');
+      card.id = item.id;
+      card.dataset.step = String(item.step);
+      card.dataset.label = item.label;
+      card.dataset.svgKey = item.svg;
+      card.className = 'draggable-card';
+      card.innerHTML = `
+        <span class="card-icon">${SVG_LIBRARY[item.svg] || ''}</span>
+        <span class="card-label">${item.label}</span>
+      `;
+      setupPointerDragAndTap(card);
+      return card;
+    }
+
+    function setupPointerDragAndTap(card) {
+      let isDragging = false;
+      let hasMovedSignificantly = false;
+      let startX = 0, startY = 0;
+      let activePointerId = null;
+
+      card.addEventListener('pointerdown', (e) => {
+        if (isProcessing || (e.button !== undefined && e.button !== 0)) return;
+        markInteractionStart();
+        isDragging = true;
+        hasMovedSignificantly = false;
+        activePointerId = e.pointerId;
+        startX = e.clientX;
+        startY = e.clientY;
+        
+        try { card.setPointerCapture(e.pointerId); } catch (err) {}
+        card.classList.add('card-dragging');
+        card.style.transition = 'none';
+        card.style.transform = 'translate3d(0px, 0px, 0px) scale(1.18)';
+      });
+
+      card.addEventListener('pointermove', (e) => {
+        if (!isDragging || e.pointerId !== activePointerId) return;
+        const deltaX = e.clientX - startX;
+        const deltaY = e.clientY - startY;
+
+        if (Math.hypot(deltaX, deltaY) > 6) hasMovedSignificantly = true;
+        
+        card.style.transition = 'none';
+        card.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0px) scale(1.18)`;
+        highlightZoneUnderPoint(e.clientX, e.clientY, card);
+      });
+
+      const onPointerUp = (e) => {
+        if (!isDragging || e.pointerId !== activePointerId) return;
+        isDragging = false;
+        card.classList.remove('card-dragging');
+        clearZoneHighlights();
+        
+        try { card.releasePointerCapture(e.pointerId); } catch (err) {}
+
+        if (!hasMovedSignificantly) {
+          handleCardTap(card);
+          card.style.transition = 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          if (card !== selectedItemElement) {
+            card.style.transform = 'translate3d(0px, 0px, 0px) scale(1)';
+          }
+          return;
+        }
+
+        card.style.pointerEvents = 'none';
+        const elementBelow = document.elementFromPoint(e.clientX, e.clientY);
+        card.style.pointerEvents = 'auto';
+
+        const dropZone = elementBelow?.closest('.category-zone:not(.zone-hidden)') || findZoneByBoundingBox(e.clientX, e.clientY);
+
+        if (dropZone && !dropZone.classList.contains('zone-filled')) {
+          checkSequenceMatch(card, dropZone, 'drag');
+        } else {
+          recordOffTargetDrop();
+          snapBack(card);
+        }
+      };
+
+      card.addEventListener('pointerup', onPointerUp);
+      card.addEventListener('pointercancel', onPointerUp);
+    }
+
+    function findZoneByBoundingBox(clientX, clientY) {
+      for (const zone of getActiveZones()) {
+        const rect = zone.getBoundingClientRect();
+        if (clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom) {
+          return zone;
+        }
+      }
+      return null;
+    }
+
+    function highlightZoneUnderPoint(clientX, clientY, currentCard) {
+      currentCard.style.pointerEvents = 'none';
+      const targetZone = document.elementFromPoint(clientX, clientY)?.closest('.category-zone:not(.zone-hidden)') || findZoneByBoundingBox(clientX, clientY);
+      currentCard.style.pointerEvents = 'auto';
+
+      getActiveZones().forEach(zone => {
+        const canHover = zone === targetZone && !zone.classList.contains('zone-filled');
+        zone.classList.toggle('zone-hovered', canHover);
+      });
+    }
+
+    function clearZoneHighlights() {
+      getActiveZones().forEach(zone => zone.classList.remove('zone-hovered'));
+    }
+
+    function snapBack(card) {
+      card.classList.remove('card-dragging');
+      card.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      card.style.transform = 'translate3d(0px, 0px, 0px) scale(1)';
+    }
+
+    function handleCardTap(card) {
+      if (selectedItemElement === card) {
+        deselectCard();
+      } else {
+        deselectCard();
+        selectedItemElement = card;
+        activeCardTouchStart = Date.now();
+        card.classList.add('card-selected-glow');
+        playSound('select');
+      }
+    }
+
+    function deselectCard() {
+      if (selectedItemElement) {
+        selectedItemElement.classList.remove('card-selected-glow');
+        selectedItemElement.style.transform = 'translate3d(0px, 0px, 0px) scale(1)';
+        selectedItemElement = null;
+      }
+    }
+
+    document.querySelectorAll('.category-zone').forEach(zone => {
+      zone.addEventListener('click', () => {
+        if (selectedItemElement && !isProcessing && !zone.classList.contains('zone-hidden') && !zone.classList.contains('zone-filled')) {
+          checkSequenceMatch(selectedItemElement, zone, 'tap');
+        }
+      });
+    });
+
+    function triggerZoneShake(zone) {
+      if (!zone) return;
+      zone.classList.remove('zone-shake');
+      void zone.offsetWidth;
+      zone.classList.add('zone-shake');
+      setTimeout(() => {
+        zone.classList.remove('zone-shake');
+      }, 480);
+    }
+
+    function checkSequenceMatch(cardElement, targetZone, method = 'tap') {
+      if (isProcessing) return;
+
+      const cardStep = Number(cardElement.dataset.step);
+      const targetStep = Number(targetZone.dataset.step);
+
+      // Must match both the next chronological step AND be placed in that step's slot
+      const isCorrect = (cardStep === expectedStep) && (targetStep === expectedStep);
+
+      recordPlacementAttempt(cardElement, targetZone, isCorrect, method);
+
+      if (isCorrect) {
+        isProcessing = true;
+        deselectCard();
+        playSound('correct');
+
+        const svgKey = cardElement.dataset.svgKey;
+        const stepLabel = cardElement.dataset.label;
+
+        cardElement.style.transition = 'all 0.25s ease';
+        cardElement.style.transform = 'scale(0.01)';
+        cardElement.style.opacity = '0';
+
+        // Populate the step zone visually with the sequenced symbol card
+        targetZone.classList.add('zone-filled');
+        targetZone.querySelector('.zone-icon-circle').innerHTML = SVG_LIBRARY[svgKey] || String(expectedStep);
+        targetZone.querySelector('.zone-heading').textContent = stepLabel;
+        targetZone.querySelector('.zone-sub').textContent = `Step ${expectedStep} ✓`;
+
+        expectedStep++;
+        updateZoneVisualStates();
+
+        setTimeout(() => {
+          cardElement.remove();
+          updateBadge();
+          if (itemsDock.children.length === 0) {
+            finalizeCurrentRound();
+          }
+          showBslThankYouModal();
+        }, 250);
+      } else {
+        snapBack(cardElement);
+        deselectCard();
+        triggerZoneShake(targetZone);
+        playSound('incorrect');
+      }
+    }
+
+    function showBslThankYouModal() {
+      bslModal.classList.add('active');
+      setTimeout(hideBslModal, 1900);
+    }
+
+    function hideBslModal() {
+      bslModal.classList.remove('active');
+      setTimeout(() => {
+        isProcessing = false;
+        if (itemsDock.children.length === 0) triggerGrandCelebration();
+      }, 300);
+    }
+
+    function triggerGrandCelebration() {
+      celebrationOverlay.classList.add('active');
+      playSound('fanfare');
+      startConfettiFountains();
+    }
+
+    /* ==========================================
+       CONFETTI FOUNTAIN ENGINE
+       ========================================== */
+    const confettiCanvas = document.getElementById('confettiCanvas');
+    const confettiCtx = confettiCanvas ? confettiCanvas.getContext('2d') : null;
+    let confettiParticles = [];
+    let confettiAnimId = null;
+    let fountainIntervalId = null;
+
+    function resizeConfettiCanvas() {
+      if (!confettiCanvas) return;
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeConfettiCanvas);
+
+    const CONFETTI_COLORS = [
+      '#f59e0b', '#ef4444', '#10b981', '#3b82f6', 
+      '#ec4899', '#8b5cf6', '#06b6d4', '#facc15'
+    ];
+
+    function createFountainParticle(originX, originY, angleDeg) {
+      const angleRad = (angleDeg * Math.PI) / 180;
+      const speed = 15 + Math.random() * 11;
+      return {
+        x: originX,
+        y: originY,
+        vx: Math.cos(angleRad) * speed + (Math.random() - 0.5) * 3,
+        vy: Math.sin(angleRad) * speed,
+        gravity: 0.42,
+        drag: 0.985,
+        wobble: Math.random() * 10,
+        wobbleSpeed: 0.08 + Math.random() * 0.06,
+        size: 7 + Math.random() * 7,
+        color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+        opacity: 1,
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 12
+      };
+    }
+
+    function launchFountainBursts() {
+      if (!confettiCanvas) return;
+      const w = confettiCanvas.width;
+      const h = confettiCanvas.height;
+      const fountainY = h * 0.67;
+
+      for (let i = 0; i < 9; i++) {
+        confettiParticles.push(createFountainParticle(w * 0.04, fountainY, -55 + (Math.random() - 0.5) * 28));
+      }
+
+      for (let i = 0; i < 9; i++) {
+        confettiParticles.push(createFountainParticle(w * 0.96, fountainY, -125 + (Math.random() - 0.5) * 28));
+      }
+    }
+
+    function updateAndRenderConfetti() {
+      if (!confettiCtx || !confettiCanvas) return;
+      confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+
+      for (let i = confettiParticles.length - 1; i >= 0; i--) {
+        const p = confettiParticles[i];
+        p.vx *= p.drag;
+        p.vy *= p.drag;
+        p.vy += p.gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.wobble += p.wobbleSpeed;
+        p.rotation += p.rotationSpeed;
+
+        if (p.y > confettiCanvas.height - 20) {
+          p.opacity -= 0.035;
+        }
+
+        if (p.opacity <= 0 || p.y > confettiCanvas.height + 50) {
+          confettiParticles.splice(i, 1);
+          continue;
+        }
+
+        confettiCtx.save();
+        confettiCtx.translate(p.x, p.y);
+        confettiCtx.rotate((p.rotation * Math.PI) / 180);
+        confettiCtx.scale(Math.cos(p.wobble), 1);
+        confettiCtx.fillStyle = p.color;
+        confettiCtx.globalAlpha = Math.max(0, p.opacity);
+        confettiCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+        confettiCtx.restore();
+      }
+
+      if (confettiParticles.length > 0 || fountainIntervalId) {
+        confettiAnimId = requestAnimationFrame(updateAndRenderConfetti);
+      }
+    }
+
+    function startConfettiFountains() {
+      stopConfettiFountains();
+      resizeConfettiCanvas();
+      
+      launchFountainBursts();
+      launchFountainBursts();
+
+      fountainIntervalId = setInterval(launchFountainBursts, 80);
+      setTimeout(() => {
+        if (fountainIntervalId) {
+          clearInterval(fountainIntervalId);
+          fountainIntervalId = null;
+        }
+      }, 2800);
+
+      updateAndRenderConfetti();
+    }
+
+    function stopConfettiFountains() {
+      if (fountainIntervalId) {
+        clearInterval(fountainIntervalId);
+        fountainIntervalId = null;
+      }
+      if (confettiAnimId) {
+        cancelAnimationFrame(confettiAnimId);
+        confettiAnimId = null;
+      }
+      confettiParticles = [];
+      if (confettiCtx && confettiCanvas) {
+        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      }
+    }
+
+    /* ==========================================
+       EVENT LISTENERS & INITIALIZATION
+       ========================================== */
+    document.getElementById('playAgainBtn').addEventListener('click', initGame);
+    document.getElementById('nextTaskCelebrationBtn').addEventListener('click', toggleTask);
+    document.getElementById('resetButton').addEventListener('click', initGame);
+    document.getElementById('soundToggleBtn').addEventListener('click', toggleSound);
+    document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
+    document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
+    document.getElementById('levelToggleBtn').addEventListener('click', toggleLevel);
+    document.getElementById('taskToggleBtn').addEventListener('click', toggleTask);
+
+    document.getElementById('reportBtn').addEventListener('click', openReportModal);
+    document.getElementById('celebrationReportBtn').addEventListener('click', openReportModal);
+    document.getElementById('closeReportBtn').addEventListener('click', closeReportModal);
+    document.getElementById('copyReportBtn').addEventListener('click', copyReportToClipboard);
+    document.getElementById('clearSessionBtn').addEventListener('click', clearSessionHistory);
+
+    initTheme();
+    updateTaskAndLevelButtonsUI();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGame);
+    } else {
+      initGame();
+    }
+  </script>
+</body>
+</html>
